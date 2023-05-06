@@ -72,7 +72,6 @@ fetch(postsUrl)
 
             const modalBox = document.createElement("div")
             modalBox.setAttribute("class", "modal-dialog modal-dialog-centered modal-dialog-scrollable")
-            modalBox.setAttribute("id", "myModal")
             modalWhole.appendChild(modalBox)
 
             const modalContent = document.createElement("div")
@@ -88,35 +87,44 @@ fetch(postsUrl)
             modalTitle.textContent = element["title"]
             modalHeader.appendChild(modalTitle)
 
-            const modalBtnClose = document.createElement("button")
-            modalBtnClose.setAttribute("type", "button")
-            modalBtnClose.setAttribute("class", "close")
-            modalBtnClose.setAttribute("data-dismiss", "modal")
-            modalBtnClose.setAttribute("aria-label", "Close")
-            modalHeader.appendChild(modalBtnClose)
+            // const modalBtnClose = document.createElement("button")
+            // modalBtnClose.setAttribute("type", "button")
+            // modalBtnClose.setAttribute("class", "close")
+            // modalBtnClose.setAttribute("data-dismiss", "modal")
+            // modalBtnClose.setAttribute("aria-label", "Close")
+            // modalContent.appendChild(modalBtnClose)
 
-            const spanBtnClose = document.createElement("span")
-            spanBtnClose.setAttribute("aria-hidden", "true")
-            modalBtnClose.appendChild(spanBtnClose)
+            const btnClose = document.createElement("button")
+            btnClose.innerHTML = '<i class="bi bi-x-circle"></i>'
+            btnClose.setAttribute("type", "button")
+            btnClose.setAttribute("class", "btn-close")
+            btnClose.setAttribute("data-bs-dismiss", "modal")
+            // btnClose.setAttribute("aria-label", "Close")
+            modalContent.appendChild(btnClose)
+
+            // <i class="bi bi-pencil-square">
+            
 
             const modalBody = document.createElement("div")
             modalBody.setAttribute("class", "modal-body")
             modalBody.textContent = element["body"]
-            modalBox.appendChild(modalBody)
+            modalContent.appendChild(modalBody)
             
             const modalFooter = document.createElement("div")
             modalFooter.setAttribute("class", "modal-footer")
-            modalHeader.appendChild(modalFooter)
+            modalContent.appendChild(modalFooter)
 
             const modalFooterBtnClose = document.createElement("button")
             modalFooterBtnClose.setAttribute("type", "button")
             modalFooterBtnClose.setAttribute("class", "btn btn-secondary")
             modalFooterBtnClose.setAttribute("data-dismiss", "modal")
+            modalFooterBtnClose.textContent = "Close"
             modalFooter.appendChild(modalFooterBtnClose)
 
             const modalFooterBtnModify = document.createElement("button")
             modalFooterBtnModify.setAttribute("type", "button")
             modalFooterBtnModify.setAttribute("class", "btn btn-primary")
+            modalFooterBtnModify.textContent = "Modify"
             modalFooter.appendChild(modalFooterBtnModify)
             
 
