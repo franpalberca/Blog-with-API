@@ -2,7 +2,7 @@ const postsUrl = "http://localhost:3000/posts"
 const userUrL = "http://localhost:3000/users"
 const commentsUrl = "http://localhost:3000/comments"
 const boxPost = document.querySelector("#box-post")
-const modal = document.querySelector("#modalCentered")
+const modal = document.querySelector("#modal")
 
 
 fetch(postsUrl)
@@ -46,11 +46,9 @@ fetch(postsUrl)
             const view = "View"
             postBtnOneText.textContent = view
             postBtnOne.appendChild(postBtnOneText)
-            const botonModal = document.querySelector('[data-modal="mi-modal"]');
             postBtnOne.addEventListener('click', function() {
-                modal.style.display = 'block';
-            });
-
+                modalWhole.style.display = 'block';
+                });
 
             const postBtnTwo = document.createElement("button")
             postBtnTwo.setAttribute("type", "button")
@@ -63,11 +61,66 @@ fetch(postsUrl)
             postBtnTwoText.textContent = remove
             postBtnTwo.appendChild(postBtnTwoText)
 
-            const modalText = document.createElement("div")
-            modalText.setAttribute("class", "modal-dialog modal-dialog-centered modal-dialog-scrollable")
-            modalText.setAttribute("id", "myModal")
-            modal.appendChild(modalText)
+            //Modal
+            const modalWhole = document.createElement("div")
+            modalWhole.setAttribute("class", "modal")
+            modalWhole.setAttribute("tabindex", "-1")
+            modalWhole.setAttribute("role", "dialog")
+            modalWhole.setAttribute("aria-labelledby", "exampleModalCenteredLabel")
+            modalWhole.setAttribute("aria-hidden", "true")
+            modal.appendChild(modalWhole)
+
+            const modalBox = document.createElement("div")
+            modalBox.setAttribute("class", "modal-dialog modal-dialog-centered modal-dialog-scrollable")
+            modalBox.setAttribute("id", "myModal")
+            modalWhole.appendChild(modalBox)
+
+            const modalContent = document.createElement("div")
+            modalContent.setAttribute("class", "modal-content")
+            modalBox.appendChild(modalContent)
+
+            const modalHeader = document.createElement("div")
+            modalHeader.setAttribute("class", "modal-header")
+            modalContent.appendChild(modalHeader)
+
+            const modalTitle = document.createElement("h5")
+            modalTitle.setAttribute("class", "modal-title")
+            modalTitle.textContent = element["title"]
+            modalHeader.appendChild(modalTitle)
+
+            const modalBtnClose = document.createElement("button")
+            modalBtnClose.setAttribute("type", "button")
+            modalBtnClose.setAttribute("class", "close")
+            modalBtnClose.setAttribute("data-dismiss", "modal")
+            modalBtnClose.setAttribute("aria-label", "Close")
+            modalHeader.appendChild(modalBtnClose)
+
+            const spanBtnClose = document.createElement("span")
+            spanBtnClose.setAttribute("aria-hidden", "true")
+            modalBtnClose.appendChild(spanBtnClose)
+
+            const modalBody = document.createElement("div")
+            modalBody.setAttribute("class", "modal-body")
+            modalBody.textContent = element["body"]
+            modalBox.appendChild(modalBody)
+            
+            const modalFooter = document.createElement("div")
+            modalFooter.setAttribute("class", "modal-footer")
+            modalHeader.appendChild(modalFooter)
+
+            const modalFooterBtnClose = document.createElement("button")
+            modalFooterBtnClose.setAttribute("type", "button")
+            modalFooterBtnClose.setAttribute("class", "btn btn-secondary")
+            modalFooterBtnClose.setAttribute("data-dismiss", "modal")
+            modalFooter.appendChild(modalFooterBtnClose)
+
+            const modalFooterBtnModify = document.createElement("button")
+            modalFooterBtnModify.setAttribute("type", "button")
+            modalFooterBtnModify.setAttribute("class", "btn btn-primary")
+            modalFooter.appendChild(modalFooterBtnModify)
+            
 
 
         })
     })
+    
